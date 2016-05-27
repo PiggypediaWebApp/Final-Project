@@ -1,0 +1,16 @@
+
+<!-- <form ng-submit="homeCtrl.addParagraph()">
+  <input type="text" ng-model="homeCtrl.todoText" size="3" placeholder="add new todo here">
+  <input class="btn-primary" type="submit" value="add">
+</form> -->
+
+<div class="jumbotron text-center">
+  <h1>PIGGYPEDIA</h1>
+  <h5>Input paragraph</h5>
+  <form method="post">
+    <textarea id="inputbox" type="text" ng-model="homeCtrl.paragraph" ng-trim="false" maxlength="{{homeCtrl.maxlength}}" placeholder="Input paragraph here"></textarea>
+    <p>word left : <span id="wordleft">{{homeCtrl.maxlength - homeCtrl.paragraph.length}}</span></p>
+    <p>{{homeCtrl.paragraph.length}}</p>
+    <button class="btn btn-large btn-primary" type="submit" ng-click="homeCtrl.addParagraph()">Start wiki inspect</button>
+  </form>
+</div>

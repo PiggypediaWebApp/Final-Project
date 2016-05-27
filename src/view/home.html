@@ -1,0 +1,14 @@
+
+<!-- <form ng-submit="homeCtrl.addParagraph()">
+  <input type="text" ng-model="homeCtrl.todoText" size="3" placeholder="add new todo here">
+  <input class="btn-primary" type="submit" value="add">
+</form> -->
+
+<div class="jumbotron text-center">
+  <img src="src/image/logo.png" class="img-responsive" id="logo">
+  <h1>PIGGYPEDIA</h1><br>
+  <p>*Please insert <font ng-style="homeCtrl.FontStyle"> /n </font>to end each sentence</p>
+  <textarea id="inputbox" type="text" ng-model="homeCtrl.text" ng-change="homeCtrl.UpdateLengths()" ng-trim="false" maxlength="{{homeCtrl.maxlength}}" placeholder="Input text here"></textarea>
+  <p ng-model="homeCtrl.WordsLength"> You have entered <font ng-style="homeCtrl.FontStyle">{{homeCtrl.WordsLength}}</font>/200 words </p>
+  <button class="btn btn-primary btn-lg" ng-click="homeCtrl.addParagraph()" type="submit" ng-disabled="homeCtrl.isDisabled">{{homeCtrl.buttonText}}</button>
+</div>
