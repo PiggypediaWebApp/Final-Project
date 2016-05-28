@@ -11,3 +11,16 @@
 
 ## Web Application Design
 ![alt text](https://github.com/PiggypediaWebApp/Final-Project/blob/master/src/image/Diagram.png)
+
+
+## EC2 Configuration
+
+##### Frontend 
+IP: 52.77.208.153 - Load Balance
+IP: 52.77.240.157 - Web
+IP: 52.77.252.2 - Web
+
+##### Backend
+IP: 52.77.244.73 - Master Node
+IP: 52 221.244.226 - Slave Node (datanode)
+IP: 54.169.56.235: Slave Node (datanode)
