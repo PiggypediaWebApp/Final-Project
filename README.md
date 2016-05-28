@@ -47,22 +47,22 @@ Users input text into textarea and they have to type “/n” at the end of each
 
 ##### Application Server :
 - API-Server
-    Implement it with node.js 
-    When received POST Request from web server, it will execute the command in terminal
-    Create the input file from the request to be one sentence per line
-    Run PIG Latin
-    Store the output from mapreduce in the output file
-    Return the output which contain location of filename, sentence number, and text in JSON format to web server
+    - Implement it with node.js 
+    - When received POST Request from web server, it will execute the command in terminal
+    - Create the input file from the request to be one sentence per line
+    - Run PIG Latin
+    - Store the output from mapreduce in the output file
+    - Return the output which contain location of filename, sentence number, and text in JSON format to web server
 - Map Reduce process 
-    Implement by PIG Latin
-    Load the textbook folder and store in SET1
-    Load the input file and store in SET2
-    Split each element in SET1 by ‘{_}’ and store the value in SENTENCES
-    Set the SET2 variable again and store in INPUTS
-    Join the INPUTS and SENTENCES with the same text and store in JOINSET
-    Select only wanted value from each JOINSET and store in JOINCLEAN
-    Write the result in my_search_pig_out
-    ***All loaded data must store in HDFS also the destination of written data will be in HDFS
+    - Implement by PIG Latin
+    - Load the textbook folder and store in SET1
+    - Load the input file and store in SET2
+    - Split each element in SET1 by ‘{_}’ and store the value in SENTENCES
+    - Set the SET2 variable again and store in INPUTS
+    - Join the INPUTS and SENTENCES with the same text and store in JOINSET
+    - Select only wanted value from each JOINSET and store in JOINCLEAN
+    - Write the result in my_search_pig_out
+    - ***All loaded data must store in HDFS also the destination of written data will be in HDFS
 
 
 ## Problems
