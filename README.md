@@ -41,12 +41,12 @@ IP: 54.169.56.235: Slave Node (datanode)
 ## Process flow
 
 ##### Load Balance : 
-    - Deploy web server(angularJS) into tomcat8 : 2 instances
-    - Implementeed the server with Apache2 (HTTP-SERVER)
-    - Loaded mod_jk module to do a load balancing
-    - Assign workers : 52.77.240.157 and 52.77.252.2 with unweighted round robin algorithm.
-    - Closed ports in workers and use ajp13 protocol only to redirect to workers.
-    - Use JkMount to redirect /piggy-pedia* to load balancer.
+- Deploy web server(angularJS) into tomcat8 : 2 instances.
+- Implementeed the server with Apache2 (HTTP-SERVER).
+- Loaded mod_jk module to do a load balancing.
+- Assign workers : 52.77.240.157 and 52.77.252.2 with unweighted round robin algorithm.
+- Closed ports in workers and use ajp13 protocol only to redirect to workers.
+- Use JkMount to redirect /piggy-pedia* to load balancer.
 
 
 ##### Web server :
@@ -61,6 +61,7 @@ Users input text into textarea and they have to type “/n” at the end of each
     - Run PIG Latin by using child_process module to execute "pig search.pig"
     - Read output file from HDFS using webhdfs
     - Return the output which contain location of filename, sentence number, and text in JSON format to web server
+
 - Map Reduce process 
     - Implement by PIG Latin
     - Load the textbook folder and store in SET1
@@ -71,6 +72,20 @@ Users input text into textarea and they have to type “/n” at the end of each
     - Select only wanted value from each JOINSET and store in JOINCLEAN
     - Write the result in my_search_pig_out
     - ***All loaded data must store in HDFS also the destination of written data will be in HDFS.
+
+- PIG
+
+set1 = LOAD '/user/webapp1/example' as (line:chararray);
+set2 = LOAD '/user/webapp1/input.txt' AS (inText:chararray);
+
+sentences = FOREACH set1 GENERATE FLATTEN(STRSPLIT(line, '\\u007B\\u005F\\u007D')) AS (file:chararray, num:chararray, text:chararray);
+inputs = FOREACH set2 GENERATE inText AS inText;
+
+joinSet = JOIN inputs BY inText, sentences BY text;
+joinClean = FOREACH joinSet GENERATE file, num, text;
+
+store joinClean into '/user/webapp1/outupt/my_search_pig_out';
+
 
 
 ## Problems
