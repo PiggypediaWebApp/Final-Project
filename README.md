@@ -8,6 +8,14 @@
 - Thanyaboon Tovorapan 5610546745 [chaoexit](https://github.com/chaoexit)
 - Mintra Thirasirisin 5610546761 [mntrq](https://github.com/mntrq)
 
+##### Contributions
+- Thanyaboon: config load balancer
+- Pongsachon: config hadoop cluster
+- Tanatorn:  web server
+- Mintra : api-server
+- Pongsachon: PIG
+- Nabhat : pre process file
+
 
 ## Web Application Design
 ![alt text](https://github.com/PiggypediaWebApp/Final-Project/blob/master/src/image/Diagram.png)
