@@ -41,6 +41,13 @@ IP: 54.169.56.235: Slave Node (datanode)
 ## Process flow
 
 ##### Load Balance : 
+    - Deploy web server(angularJS) into tomcat8 : 2 instances
+    - Implementeed the server with Apache2 (HTTP-SERVER)
+    - Loaded mod_jk module to do a load balancing
+    - Assign workers : 52.77.240.157 and 52.77.252.2 with unweighted round robin algorithm.
+    - Closed ports in workers and use ajp13 protocol only to redirect to workers.
+    - Use JkMount to redirect /piggy-pedia* to load balancer.
+
 
 ##### Web server :
 Users input text into textarea and they have to type “/n” at the end of each sentence. The textarea is limited at 200 words. When users finish typing, click the button below the textarea. Once the button is clicked, the text paragraph is splitted into sentences by using /n as a mark. The splitted sentences are collected in array. Then posting SOAP request to server with the array as a body and get the response from the server. After that, highlight sentences that copied from Wikipedia.
@@ -50,8 +57,9 @@ Users input text into textarea and they have to type “/n” at the end of each
     - Implement it with node.js 
     - When received POST Request from web server, it will execute the command in terminal
     - Create the input file from the request to be one sentence per line
-    - Run PIG Latin
-    - Store the output from mapreduce in the output file
+    - Send input file to HDFS using webhdfs
+    - Run PIG Latin by using child_process module to execute "pig search.pig"
+    - Read output file from HDFS using webhdfs
     - Return the output which contain location of filename, sentence number, and text in JSON format to web server
 - Map Reduce process 
     - Implement by PIG Latin
@@ -67,6 +75,6 @@ Users input text into textarea and they have to type “/n” at the end of each
 
 ## Problems
 - Condition and process of split text into sentences is complicated. So, we can’t implement auto split sentence in time and let the user mark the end of sentence instead.
-
+- Hadoop cluster can't finish pig job due to memory problem in JVM. But can finish WorkCount example an SecondLink from homework5 without any problem. 
 
 
