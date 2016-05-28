@@ -62,9 +62,11 @@ Users input text into textarea and they have to type “/n” at the end of each
     - Join the INPUTS and SENTENCES with the same text and store in JOINSET
     - Select only wanted value from each JOINSET and store in JOINCLEAN
     - Write the result in my_search_pig_out
-    - ***All loaded data must store in HDFS also the destination of written data will be in HDFS
+    - ***All loaded data must store in HDFS also the destination of written data will be in HDFS.
 
 
 ## Problems
+- Condition and process of split text into sentences is complicated. So, we can’t implement auto split sentence in time and let the user mark the end of sentence instead.
+
 
 
